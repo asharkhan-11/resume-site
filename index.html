@@ -6,8 +6,8 @@
   <title>Ashar Khan - Resume</title>
   <style>
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
-      background: #f7f9fa;
+      font-family: Arial, Helvetica, sans-serif;
+      background: #fff;
       color: #222;
       margin: 0;
       padding: 0;
@@ -16,71 +16,82 @@
     }
     .container {
       max-width: 900px;
-      margin: 40px auto;
-      background: #fff;
+      margin: 48px auto 40px auto;
+      background: #f5f5f5;
       box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-      border-radius: 10px;
-      padding: 40px 32px 32px 32px;
-      opacity: 0;
-      transform: translateY(40px);
-      animation: fadeInUp 1.1s cubic-bezier(.23,1.01,.32,1) 0.2s forwards;
-    }
-    @keyframes fadeInUp {
-      to {
-        opacity: 1;
-        transform: none;
-      }
-    }
-    h1, h2, h3 {
-      color: #1a237e;
-      margin-top: 0;
-      transition: color 0.3s;
+      border-radius: 12px;
+      padding: 40px 28px 28px 28px;
+      border: 1px solid #e0e0e0;
     }
     h1 {
-      font-size: 2.5em;
-      margin-bottom: 0.2em;
-      opacity: 0;
-      animation: fadeIn 1s 0.5s forwards;
+      font-size: 2.2em;
+      margin-bottom: 0.15em;
+      color: #222;
+      font-weight: bold;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
     }
-    @keyframes fadeIn {
-      to { opacity: 1; }
+    .profile-icon {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      background: #e0e0e0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1em;
+      color: #555;
+    }
+    .header-accent {
+      display: block;
+      width: 48px;
+      height: 4px;
+      border-radius: 2px;
+      background: #222;
+      margin: 0.2em 0 1.2em 0;
     }
     .contact {
-      font-size: 1.1em;
+      font-size: 1.08em;
       margin-bottom: 1.5em;
       color: #444;
-      opacity: 0;
-      animation: fadeIn 1s 0.7s forwards;
     }
     .contact a {
-      color: #1565c0;
-      text-decoration: none;
-      transition: color 0.3s;
+      color: #222;
+      text-decoration: underline;
+      font-weight: 500;
     }
     .contact a:hover {
-      color: #0d47a1;
-      text-decoration: underline;
+      color: #555;
+    }
+    /* Fade-in animation for sections */
+    .reveal {
+      opacity: 0;
+      transition: opacity 0.6s, transform 0.6s;
+      transform: translateY(24px);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: none;
+      transition: opacity 0.6s, transform 0.6s;
     }
     section {
       margin-bottom: 2em;
-      opacity: 0;
-      transform: translateY(30px);
-      animation: sectionFadeIn 0.9s cubic-bezier(.23,1.01,.32,1) forwards;
     }
-    section:nth-of-type(1) { animation-delay: 0.9s; }
-    section:nth-of-type(2) { animation-delay: 1.1s; }
-    section:nth-of-type(3) { animation-delay: 1.3s; }
-    section:nth-of-type(4) { animation-delay: 1.5s; }
-    section:nth-of-type(5) { animation-delay: 1.7s; }
-    section:nth-of-type(6) { animation-delay: 1.9s; }
-    section:nth-of-type(7) { animation-delay: 2.1s; }
-    section:nth-of-type(8) { animation-delay: 2.3s; }
-    section:nth-of-type(9) { animation-delay: 2.5s; }
-    @keyframes sectionFadeIn {
-      to {
-        opacity: 1;
-        transform: none;
-      }
+    h2.section-title {
+      border-bottom: 2px solid #222;
+      padding-bottom: 4px;
+      margin-bottom: 0.7em;
+      font-size: 1.15em;
+      color: #222;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      background: none;
+      opacity: 1;
+      animation: none;
+      text-shadow: none;
     }
     ul {
       margin: 0.5em 0 0.5em 1.5em;
@@ -88,65 +99,51 @@
     .skills-list, .other-skills-list, .interests-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px 24px;
+      gap: 10px 18px;
       list-style: none;
       padding: 0;
       margin: 0.5em 0 0.5em 0;
     }
     .skills-list li, .other-skills-list li, .interests-list li {
-      background: #e3eafc;
-      color: #1a237e;
-      padding: 4px 12px;
-      border-radius: 6px;
+      background: #e0e0e0;
+      color: #222;
+      padding: 4px 10px;
+      border-radius: 5px;
       font-size: 1em;
-      transition: background 0.3s, color 0.3s, transform 0.3s;
-      cursor: pointer;
+      transition: background 0.2s, color 0.2s;
+      cursor: default;
+      box-shadow: none;
     }
     .skills-list li:hover, .other-skills-list li:hover, .interests-list li:hover {
-      background: #1565c0;
-      color: #fff;
-      transform: scale(1.08) translateY(-2px);
-      box-shadow: 0 2px 8px rgba(21,101,192,0.08);
-    }
-    .section-title {
-      border-bottom: 2px solid #e3eafc;
-      padding-bottom: 4px;
-      margin-bottom: 0.7em;
-      font-size: 1.3em;
-      letter-spacing: 0.5px;
-      opacity: 0;
-      animation: fadeIn 0.7s forwards;
-      animation-delay: 0.2s;
+      background: #d1d1d1;
+      color: #111;
     }
     .job-title {
       font-weight: bold;
-      color: #263238;
-      transition: color 0.3s;
-    }
-    .job-title:hover {
-      color: #1565c0;
+      color: #222;
     }
     .job-meta {
       font-size: 0.98em;
-      color: #666;
+      color: #555;
       margin-bottom: 0.2em;
-      transition: color 0.3s;
     }
     .edu-meta {
       font-size: 0.98em;
-      color: #666;
+      color: #555;
       margin-bottom: 0.2em;
-      transition: color 0.3s;
     }
     @media (max-width: 600px) {
       .container {
-        padding: 16px 4vw;
+        padding: 12px 2vw;
       }
       h1 {
-        font-size: 2em;
+        font-size: 1.3em;
+      }
+      .header-accent {
+        width: 32px;
+        height: 3px;
       }
     }
-    /* Smooth scroll for anchor links */
     html {
       scroll-behavior: smooth;
     }
@@ -154,7 +151,11 @@
 </head>
 <body>
   <div class="container">
-    <h1>Ashar Khan</h1>
+    <h1>
+      <span class="profile-icon">👤</span>
+      Ashar Khan
+    </h1>
+    <span class="header-accent"></span>
     <div class="contact">
       <span>asharkhan11@gmail.com</span> &nbsp;|&nbsp;
       <span>+91 7019808073</span> &nbsp;|&nbsp;
@@ -162,15 +163,15 @@
       <a href="https://www.linkedin.com/in/Asharkhan10" target="_blank">LinkedIn: Asharkhan10</a>
     </div>
 
-    <section>
-      <div class="section-title">Summary</div>
+    <section class="reveal">
+      <h2 class="section-title">Summary</h2>
       <p>
         Quality Assurance & Campaign Operations Specialist with 3+ years of experience in manual testing, release validation, and campaign execution across mobile and web platforms. Adept in functional testing, defect tracking, and QA toolsets including JIRA, Postman, Charles Proxy, and Mixpanel. Experienced in regression testing, debugging, test case design, and collaborating cross-functionally with product, engineering, and analytics teams. Strong background in automation and process optimization using low-code tools and AI agents.
       </p>
     </section>
 
-    <section>
-      <div class="section-title">Work Experience</div>
+    <section class="reveal">
+      <h2 class="section-title">Work Experience</h2>
       <div>
         <span class="job-title">CRED – Campaign Operations Specialist, Central Experience Team</span>
         <div class="job-meta">March 2022 – Present | Bangalore, India</div>
@@ -198,8 +199,8 @@
       </div>
     </section>
 
-    <section>
-      <div class="section-title">Education</div>
+    <section class="reveal">
+      <h2 class="section-title">Education</h2>
       <ul>
         <li>
           <strong>Bachelor of Computer Applications (BCA)</strong> – Jain University<br>
@@ -214,8 +215,8 @@
       </ul>
     </section>
 
-    <section>
-      <div class="section-title">Technical Skills</div>
+    <section class="reveal">
+      <h2 class="section-title">Technical Skills</h2>
       <ul class="skills-list">
         <li>Manual Testing</li>
         <li>Functional Testing</li>
@@ -239,16 +240,16 @@
       </ul>
     </section>
 
-    <section>
-      <div class="section-title">Projects</div>
+    <section class="reveal">
+      <h2 class="section-title">Projects</h2>
       <ul>
         <li><strong>Voice Recorder App</strong> – Android voice recording app (BCA Project)</li>
         <li><strong>Basic Calculator App</strong> – Desktop calculator using Java (BCA Project)</li>
       </ul>
     </section>
 
-    <section>
-      <div class="section-title">Seminars & Workshops</div>
+    <section class="reveal">
+      <h2 class="section-title">Seminars & Workshops</h2>
       <ul>
         <li>Cisco Packet Tracer – Jain University, 2018</li>
         <li>Ethical Hacking Workshop – Jain University, 2018</li>
@@ -256,16 +257,16 @@
       </ul>
     </section>
 
-    <section>
-      <div class="section-title">Achievements</div>
+    <section class="reveal">
+      <h2 class="section-title">Achievements</h2>
       <ul>
         <li>Best employee in CRED operations 2023 - 2024</li>
         <li>Runners-up – entrepreneur 2018 competition</li>
       </ul>
     </section>
 
-    <section>
-      <div class="section-title">Other Skills</div>
+    <section class="reveal">
+      <h2 class="section-title">Other Skills</h2>
       <ul class="other-skills-list">
         <li>Communication</li>
         <li>Leadership</li>
@@ -278,8 +279,8 @@
       </ul>
     </section>
 
-    <section>
-      <div class="section-title">Interests</div>
+    <section class="reveal">
+      <h2 class="section-title">Interests</h2>
       <ul class="interests-list">
         <li>Football</li>
         <li>Formula 1</li>
@@ -290,5 +291,27 @@
       </ul>
     </section>
   </div>
+  <script>
+    // Scroll-triggered fade-in animation for sections
+    document.addEventListener('DOMContentLoaded', function () {
+      const reveals = document.querySelectorAll('.reveal');
+      const options = { threshold: 0.15 };
+      const revealOnScroll = new IntersectionObserver(function (entries) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          } else {
+            entry.target.classList.remove('active');
+          }
+        });
+      }, options);
+
+      reveals.forEach(section => {
+        section.classList.remove('slide-left', 'slide-right', 'zoom-in', 'bounce-in');
+        section.classList.add('fade-in');
+        revealOnScroll.observe(section);
+      });
+    });
+  </script>
 </body>
 </html>
