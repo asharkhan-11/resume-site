@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ashar Khan - Resume</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f7f9fa;
+      color: #222;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      border-radius: 10px;
+      padding: 40px 32px 32px 32px;
+      opacity: 0;
+      transform: translateY(40px);
+      animation: fadeInUp 1.1s cubic-bezier(.23,1.01,.32,1) 0.2s forwards;
+    }
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    h1, h2, h3 {
+      color: #1a237e;
+      margin-top: 0;
+      transition: color 0.3s;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 0.2em;
+      opacity: 0;
+      animation: fadeIn 1s 0.5s forwards;
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    .contact {
+      font-size: 1.1em;
+      margin-bottom: 1.5em;
+      color: #444;
+      opacity: 0;
+      animation: fadeIn 1s 0.7s forwards;
+    }
+    .contact a {
+      color: #1565c0;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .contact a:hover {
+      color: #0d47a1;
+      text-decoration: underline;
+    }
+    section {
+      margin-bottom: 2em;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: sectionFadeIn 0.9s cubic-bezier(.23,1.01,.32,1) forwards;
+    }
+    section:nth-of-type(1) { animation-delay: 0.9s; }
+    section:nth-of-type(2) { animation-delay: 1.1s; }
+    section:nth-of-type(3) { animation-delay: 1.3s; }
+    section:nth-of-type(4) { animation-delay: 1.5s; }
+    section:nth-of-type(5) { animation-delay: 1.7s; }
+    section:nth-of-type(6) { animation-delay: 1.9s; }
+    section:nth-of-type(7) { animation-delay: 2.1s; }
+    section:nth-of-type(8) { animation-delay: 2.3s; }
+    section:nth-of-type(9) { animation-delay: 2.5s; }
+    @keyframes sectionFadeIn {
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+    ul {
+      margin: 0.5em 0 0.5em 1.5em;
+    }
+    .skills-list, .other-skills-list, .interests-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      list-style: none;
+      padding: 0;
+      margin: 0.5em 0 0.5em 0;
+    }
+    .skills-list li, .other-skills-list li, .interests-list li {
+      background: #e3eafc;
+      color: #1a237e;
+      padding: 4px 12px;
+      border-radius: 6px;
+      font-size: 1em;
+      transition: background 0.3s, color 0.3s, transform 0.3s;
+      cursor: pointer;
+    }
+    .skills-list li:hover, .other-skills-list li:hover, .interests-list li:hover {
+      background: #1565c0;
+      color: #fff;
+      transform: scale(1.08) translateY(-2px);
+      box-shadow: 0 2px 8px rgba(21,101,192,0.08);
+    }
+    .section-title {
+      border-bottom: 2px solid #e3eafc;
+      padding-bottom: 4px;
+      margin-bottom: 0.7em;
+      font-size: 1.3em;
+      letter-spacing: 0.5px;
+      opacity: 0;
+      animation: fadeIn 0.7s forwards;
+      animation-delay: 0.2s;
+    }
+    .job-title {
+      font-weight: bold;
+      color: #263238;
+      transition: color 0.3s;
+    }
+    .job-title:hover {
+      color: #1565c0;
+    }
+    .job-meta {
+      font-size: 0.98em;
+      color: #666;
+      margin-bottom: 0.2em;
+      transition: color 0.3s;
+    }
+    .edu-meta {
+      font-size: 0.98em;
+      color: #666;
+      margin-bottom: 0.2em;
+      transition: color 0.3s;
+    }
+    @media (max-width: 600px) {
+      .container {
+        padding: 16px 4vw;
+      }
+      h1 {
+        font-size: 2em;
+      }
+    }
+    /* Smooth scroll for anchor links */
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Ashar Khan</h1>
+    <div class="contact">
+      <span>asharkhan11@gmail.com</span> &nbsp;|&nbsp;
+      <span>+91 7019808073</span> &nbsp;|&nbsp;
+      <span>Bangalore, India</span> &nbsp;|&nbsp;
+      <a href="https://www.linkedin.com/in/Asharkhan10" target="_blank">LinkedIn: Asharkhan10</a>
+    </div>
+
+    <section>
+      <div class="section-title">Summary</div>
+      <p>
+        Quality Assurance & Campaign Operations Specialist with 3+ years of experience in manual testing, release validation, and campaign execution across mobile and web platforms. Adept in functional testing, defect tracking, and QA toolsets including JIRA, Postman, Charles Proxy, and Mixpanel. Experienced in regression testing, debugging, test case design, and collaborating cross-functionally with product, engineering, and analytics teams. Strong background in automation and process optimization using low-code tools and AI agents.
+      </p>
+    </section>
+
+    <section>
+      <div class="section-title">Work Experience</div>
+      <div>
+        <span class="job-title">CRED – Campaign Operations Specialist, Central Experience Team</span>
+        <div class="job-meta">March 2022 – Present | Bangalore, India</div>
+        <ul>
+          <li>Performed end-to-end functional testing, regression testing, and sanity testing for mobile app releases.</li>
+          <li>Collaborated with Backend, Frontend, QA, Product, and Analytics teams to ensure smooth campaign and feature deployments.</li>
+          <li>Managed configuration, test case design, debugging, and performance validation for user engagement campaigns.</li>
+          <li>Utilized JIRA to log, track, and resolve bugs and campaign tasks.</li>
+          <li>Used Postman for API testing and troubleshooting configuration issues.</li>
+          <li>Employed Mixpanel and DataBricks for segmentation, performance tracking, and SQL-based debugging.</li>
+          <li>Created and maintained SOPs, WBRs, and MBRs for campaign operations.</li>
+          <li>Automated repetitive tasks using low-code platforms and AI tools to reduce manual effort and increase accuracy.</li>
+          <li>Used Cline to resolve technical blockers and ensure release readiness.</li>
+        </ul>
+      </div>
+      <div style="margin-top:1.2em;">
+        <span class="job-title">Amazon – Seller Support Associate</span>
+        <div class="job-meta">January 2021 – March 2022 | Bangalore, India</div>
+        <ul>
+          <li>Resolved platform-related issues around listings, payments, and account access through root cause analysis and error tracking.</li>
+          <li>Identified platform bugs and collaborated with technical teams to escalate and fix recurring issues.</li>
+          <li>Documented common defects and contributed to knowledge bases to improve self-service resolution.</li>
+          <li>Maintained high customer satisfaction through timely issue resolution and clear communication.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="section-title">Education</div>
+      <ul>
+        <li>
+          <strong>Bachelor of Computer Applications (BCA)</strong> – Jain University<br>
+          <span class="edu-meta">Graduated: 2020 | CGPA: 7.3</span>
+        </li>
+        <li>
+          <strong>Jain Pre-University – PUC</strong>, 69%
+        </li>
+        <li>
+          <strong>St. Joseph’s Boys High School – SSLC</strong>, 83%
+        </li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="section-title">Technical Skills</div>
+      <ul class="skills-list">
+        <li>Manual Testing</li>
+        <li>Functional Testing</li>
+        <li>Regression Testing</li>
+        <li>Test Case Design</li>
+        <li>JIRA</li>
+        <li>Postman</li>
+        <li>Mixpanel</li>
+        <li>DataBricks</li>
+        <li>Charles Proxy</li>
+        <li>Cline</li>
+        <li>Java</li>
+        <li>Python (basic)</li>
+        <li>JavaScript (basic)</li>
+        <li>HTML</li>
+        <li>RDBMS</li>
+        <li>Photoshop</li>
+        <li>MS Office</li>
+        <li>Low-Code Platforms</li>
+        <li>AI Agents</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="section-title">Projects</div>
+      <ul>
+        <li><strong>Voice Recorder App</strong> – Android voice recording app (BCA Project)</li>
+        <li><strong>Basic Calculator App</strong> – Desktop calculator using Java (BCA Project)</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="section-title">Seminars & Workshops</div>
+      <ul>
+        <li>Cisco Packet Tracer – Jain University, 2018</li>
+        <li>Ethical Hacking Workshop – Jain University, 2018</li>
+        <li>“Disrupt or Be Disrupted” Seminar – St. Joseph’s College, 2019</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="section-title">Achievements</div>
+      <ul>
+        <li>Best employee in CRED operations 2023 - 2024</li>
+        <li>Runners-up – entrepreneur 2018 competition</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="section-title">Other Skills</div>
+      <ul class="other-skills-list">
+        <li>Communication</li>
+        <li>Leadership</li>
+        <li>Critical Thinking</li>
+        <li>Adaptability</li>
+        <li>Conflict Resolution</li>
+        <li>Problem Solving</li>
+        <li>High Emotional Quotient</li>
+        <li>Team Collaboration</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="section-title">Interests</div>
+      <ul class="interests-list">
+        <li>Football</li>
+        <li>Formula 1</li>
+        <li>eSports</li>
+        <li>Singing</li>
+        <li>Photography</li>
+        <li>Cooking</li>
+      </ul>
+    </section>
+  </div>
+</body>
+</html>
