@@ -172,26 +172,53 @@
     @media (max-width: 600px) {
       .header-row {
         display: flex;
+        flex-direction: row;
         align-items: flex-start;
-        gap: 12px;
+        gap: 8px;
         margin-top: 0;
         flex-wrap: wrap;
-      }
-      .header-left {
-        min-width: 0;
-        flex: 1;
       }
       .profile-photo {
         position: static;
         float: none;
         display: block;
-        margin: 0 12px 12px 0;
-        width: 60px;
-        height: 60px;
+        margin: 0 8px 8px 0;
+        width: 48px;
+        height: 48px;
         flex-shrink: 0;
+        order: 0;
+      }
+      .header-left {
+        min-width: 0;
+        flex: 1;
+        order: 1;
+        word-break: break-word;
+        overflow-wrap: break-word;
+      }
+      h1 {
+        font-size: 1em;
+        word-break: break-word;
+        overflow-wrap: break-word;
+      }
+      .contact {
+        font-size: 0.85em;
+        word-break: break-word;
+        overflow-wrap: break-word;
       }
       .container {
-        padding-top: 12px;
+        padding-top: 8px;
+      }
+    }
+    @media (max-width: 480px) {
+      .profile-photo {
+        width: 36px;
+        height: 36px;
+      }
+      h1 {
+        font-size: 0.95em;
+      }
+      .contact {
+        font-size: 0.8em;
       }
     }
     .profile-photo:hover {
