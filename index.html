@@ -169,6 +169,11 @@
       position: relative;
       padding-top: 40px;
     }
+    @media (max-width: 600px), (max-height: 600px), (pointer: coarse) and (max-device-width: 900px) {
+      .profile-photo {
+        display: none !important;
+      }
+    }
     @media (max-width: 600px) {
       .header-row {
         display: flex;
@@ -177,9 +182,6 @@
         gap: 8px;
         margin-top: 0;
         flex-wrap: wrap;
-      }
-      .profile-photo {
-        display: none;
       }
       .header-left {
         min-width: 0;
