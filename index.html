@@ -163,19 +163,23 @@
       padding-top: 40px;
     }
     @media (max-width: 600px) {
+      .header-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        margin-top: 0;
+      }
       .profile-photo {
         position: static;
-        float: left;
+        float: none;
         display: block;
         margin: 0 12px 12px 0;
         width: 60px;
         height: 60px;
+        flex-shrink: 0;
       }
       .container {
         padding-top: 12px;
-      }
-      .header-row {
-        margin-top: 0;
       }
     }
     .profile-photo:hover {
