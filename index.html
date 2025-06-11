@@ -137,7 +137,14 @@
         padding: 12px 2vw;
       }
       h1 {
-        font-size: 1.3em;
+        font-size: 1.1em;
+        word-break: break-word;
+        overflow-wrap: break-word;
+      }
+      .contact {
+        font-size: 0.95em;
+        word-break: break-word;
+        overflow-wrap: break-word;
       }
       .header-accent {
         width: 32px;
@@ -168,6 +175,11 @@
         align-items: flex-start;
         gap: 12px;
         margin-top: 0;
+        flex-wrap: wrap;
+      }
+      .header-left {
+        min-width: 0;
+        flex: 1;
       }
       .profile-photo {
         position: static;
