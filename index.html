@@ -3,381 +3,1013 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Ashar Khan - Resume</title>
+  <title>Ashar Khan — Portfolio</title>
+  <meta name="description" content="Portfolio of Ashar Khan — QA engineer building confidence in fintech products, mobile releases, and backend quality. Bangalore.">
+  <meta name="theme-color" content="#06080c">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #f7f7f5;
-      --surface: #ffffff;
-      --text: #1f2933;
-      --muted: #5f6b76;
-      --border: #d9ded8;
-      --accent: #2f5d50;
+      --bg-deep: #06080c;
+      --bg-card: rgba(16, 20, 30, 0.85);
+      --bg-card-solid: #10141e;
+      --text: #e8ecf4;
+      --text-muted: #8b95a8;
+      --accent: #3ee8c8;
+      --accent-dim: rgba(62, 232, 200, 0.12);
+      --accent-glow: rgba(62, 232, 200, 0.4);
+      --violet: #8b7cf6;
+      --violet-soft: rgba(139, 124, 246, 0.12);
+      --amber: #fbbf24;
+      --amber-soft: rgba(251, 191, 36, 0.1);
+      --border: rgba(255, 255, 255, 0.07);
+      --radius-lg: 16px;
+      --radius-md: 10px;
+      --radius-sm: 8px;
+      --nav-h: 56px;
+      --font-sans: "Outfit", system-ui, sans-serif;
+      --font-display: "Instrument Serif", Georgia, serif;
+      --section-y: 2.75rem;
+      --section-x: 1.25rem;
     }
 
-    * {
-      box-sizing: border-box;
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--nav-h) + 12px);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
     }
 
     body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      font-size: 14px;
       margin: 0;
-      padding: 28px 18px;
       min-height: 100vh;
-      line-height: 1.45;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--text);
+      background: var(--bg-deep);
+      overflow-x: hidden;
     }
 
-    .container {
-      max-width: 920px;
-      margin: 0 auto;
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      padding: 36px 40px;
+    .skip {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      padding: 10px 16px;
+      background: var(--accent);
+      color: #000;
+      font-weight: 600;
+      z-index: 10000;
+    }
+    .skip:focus { left: 12px; top: 12px; }
+
+    .bg-stage {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+    .bg-mesh {
+      position: absolute;
+      inset: -15%;
+      background:
+        radial-gradient(ellipse 70% 45% at 15% -5%, rgba(139, 124, 246, 0.28), transparent 50%),
+        radial-gradient(ellipse 55% 35% at 90% 5%, rgba(62, 232, 200, 0.18), transparent 45%),
+        radial-gradient(ellipse 45% 50% at 50% 105%, rgba(59, 130, 246, 0.08), transparent 50%),
+        linear-gradient(180deg, #080b12 0%, #06080c 45%, #070a10 100%);
+    }
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 75% 55% at 50% -5%, black, transparent 72%);
+    }
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(72px);
+      opacity: 0.42;
+      animation: float 20s ease-in-out infinite;
+    }
+    .orb-1 { width: 260px; height: 260px; background: var(--violet); top: -60px; right: -40px; animation-delay: -3s; }
+    .orb-2 { width: 220px; height: 220px; background: var(--accent); bottom: 25%; left: -80px; opacity: 0.2; animation-delay: -7s; }
+    .orb-3 { width: 160px; height: 160px; background: #3b82f6; top: 42%; right: 12%; opacity: 0.16; animation-delay: -1s; }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(12px, -10px) scale(1.03); }
     }
 
-    .header-row {
-      text-align: center;
-      padding-bottom: 22px;
+    /* Nav */
+    .nav-wrap {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 200;
+      isolation: isolate;
+      padding: 8px 16px;
+      transition: background 0.3s ease, border-color 0.3s ease, backdrop-filter 0.3s ease;
+    }
+    .nav-wrap.scrolled {
+      background: rgba(6, 8, 12, 0.82);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--border);
-      margin-bottom: 26px;
     }
-
-    h1 {
-      margin: 0 0 4px;
-      color: var(--text);
-      font-size: clamp(1.55rem, 4vw, 2rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      line-height: 1.1;
-    }
-
-    .headline {
-      color: var(--muted);
-      font-size: 0.9rem;
-      font-weight: 500;
-      margin: 0;
-    }
-
-    .contact {
-      color: var(--muted);
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
       display: flex;
-      flex-wrap: wrap;
-      gap: 6px 14px;
-      justify-content: center;
-      margin-top: 10px;
-      text-align: center;
-    }
-
-    .contact span,
-    .contact a {
-      color: inherit;
-      font-size: 0.85rem;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    .contact a:hover {
-      text-decoration: underline;
-    }
-
-    section {
-      margin-bottom: 24px;
-    }
-
-    section:last-child {
-      margin-bottom: 0;
-    }
-
-    h2.section-title {
-      color: var(--accent);
-      font-size: 0.76rem;
-      font-weight: 700;
-      letter-spacing: 0.14em;
-      margin: 0 0 10px;
-      text-transform: uppercase;
-    }
-
-    p {
-      margin: 0;
-    }
-
-    ul {
-      margin: 8px 0 0;
-      padding-left: 20px;
-    }
-
-    li {
-      margin-bottom: 5px;
-      padding-left: 2px;
-    }
-
-    .skills-list, .other-skills-list, .interests-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0 6px;
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    .skills-list li, .other-skills-list li, .interests-list li {
-      color: var(--muted);
-      padding: 0;
-      font-size: 0.82rem;
-      margin: 0;
-    }
-
-    .skills-list li:not(:last-child)::after,
-    .other-skills-list li:not(:last-child)::after,
-    .interests-list li:not(:last-child)::after {
-      content: ",";
-    }
-
-    .skill-category {
-      display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 12px;
-      margin-top: 8px;
+      min-height: 40px;
     }
-
-    .skill-category:first-of-type {
-      margin-top: 0;
-    }
-
-    .skill-category-title {
+    .logo {
+      font-family: var(--font-display);
+      font-size: 1.2rem;
+      font-style: italic;
       color: var(--text);
-      font-size: 0.86rem;
-      font-weight: 700;
-      flex: 0 0 76px;
-      margin-bottom: 0;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      flex-shrink: 0;
     }
+    .logo span { color: var(--accent); font-style: normal; }
 
-    .experience-item {
-      margin-top: 20px;
+    .nav-mid {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex: 1;
+      justify-content: center;
+      min-width: 0;
     }
-
-    .experience-item:first-of-type {
-      margin-top: 0;
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      justify-content: center;
     }
-
-    .job-title {
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      padding: 6px 10px;
+      border-radius: 999px;
+      transition: color 0.2s, background 0.2s;
+      white-space: nowrap;
+    }
+    .nav-links a:hover {
       color: var(--text);
-      font-size: 0.98rem;
-      font-weight: 700;
-    }
-
-    .job-meta {
-      color: var(--muted);
-      font-size: 0.84rem;
-      margin-top: 2px;
-    }
-
-    .company-name {
-      font-weight: 700;
-      color: var(--text);
-      font-size: 0.98rem;
-    }
-
-    .internal-movement {
-      margin-top: 12px;
-      padding-left: 14px;
-      border-left: 2px solid #eef1ed;
-    }
-
-    .internal-movement + .internal-movement {
-      margin-top: 14px;
-    }
-
-    .role-title {
-      color: var(--text);
-      font-weight: 600;
-      margin-bottom: 1px;
-    }
-
-    .edu-meta {
-      color: var(--muted);
-      font-size: 0.84rem;
+      background: rgba(255,255,255,0.06);
     }
 
     @media (max-width: 720px) {
-      body {
-        padding: 14px;
+      .nav-inner {
+        flex-wrap: wrap;
+        row-gap: 8px;
       }
+      .nav-mid {
+        order: 3;
+        flex: 1 1 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        padding-bottom: 2px;
+      }
+      .nav-mid::-webkit-scrollbar { display: none; }
+      .nav-links {
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        gap: 4px;
+      }
+    }
 
-      .container {
-        border-radius: 12px;
-        padding: 24px 20px;
-      }
+    main { position: relative; z-index: 0; }
 
-      .header-row {
-        margin-bottom: 24px;
-        padding-bottom: 20px;
-      }
+    .section {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: var(--section-y) var(--section-x);
+    }
+    .section--hero {
+      padding-top: calc(var(--nav-h) + 1.25rem);
+      padding-bottom: 2.75rem;
+      min-height: auto;
+    }
 
-      .contact {
-        justify-content: center;
-        margin-top: 10px;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.75rem;
+      align-items: start;
+    }
+    @media (min-width: 880px) {
+      .hero-grid {
+        grid-template-columns: 1.05fr 0.95fr;
+        gap: 2rem;
+        align-items: center;
       }
+    }
 
-      .skill-category {
-        display: block;
-      }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px 4px 6px;
+      background: var(--accent-dim);
+      border: 1px solid rgba(62, 232, 200, 0.22);
+      border-radius: 999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--accent-glow);
+    }
 
-      .skill-category-title {
-        margin-bottom: 2px;
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5.5vw, 3.35rem);
+      font-weight: 400;
+      line-height: 1.06;
+      margin: 0 0 10px;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 em {
+      font-style: italic;
+      background: linear-gradient(125deg, var(--text) 0%, var(--accent) 48%, var(--violet) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-tagline {
+      font-size: clamp(0.98rem, 1.8vw, 1.08rem);
+      color: var(--text-muted);
+      max-width: 38ch;
+      margin: 0 0 6px;
+    }
+    .hero-loc {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+    }
+    .hero-loc svg { width: 15px; height: 15px; stroke: var(--text-muted); opacity: 0.85; }
+
+    .hero-email {
+      margin: 0 0 14px;
+      font-size: 0.9375rem;
+    }
+    .hero-email a {
+      color: var(--accent);
+      font-weight: 600;
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .hero-email a:hover { text-decoration: underline; }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      position: relative;
+      z-index: 5;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 11px 20px;
+      border-radius: 999px;
+      font-family: inherit;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.15s, box-shadow 0.2s;
+    }
+    .btn:active { transform: scale(0.98); }
+    .btn svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 2; }
+    .btn svg.btn-ico--linkedin {
+      fill: #0a66c2;
+      stroke: none;
+      flex-shrink: 0;
+    }
+    .btn--primary {
+      background: linear-gradient(135deg, var(--accent) 0%, #2bc4a8 100%);
+      color: #041210;
+      box-shadow: 0 3px 20px rgba(62, 232, 200, 0.28);
+    }
+    .btn--primary:hover { box-shadow: 0 6px 28px rgba(62, 232, 200, 0.38); }
+    .btn--ghost {
+      background: rgba(255,255,255,0.05);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn--ghost:hover {
+      background: rgba(255,255,255,0.09);
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .hero-visual { position: relative; }
+    @media (min-width: 880px) {
+      .hero-visual { min-height: 0; }
+    }
+
+    .hero-svg-wrap {
+      position: absolute;
+      inset: -12px;
+      z-index: 0;
+      opacity: 0.85;
+      pointer-events: none;
+    }
+    .hero-card {
+      position: relative;
+      z-index: 1;
+      background: var(--bg-card);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 18px 20px;
+      box-shadow: 0 16px 48px rgba(0,0,0,0.35);
+    }
+    .hero-grid > div:first-child { position: relative; z-index: 2; }
+
+    .snapshot-kicker {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 14px;
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .snapshot-kicker svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .snapshot-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .snapshot-list li {
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      font-size: 0.8125rem;
+      line-height: 1.45;
+      color: var(--text-muted);
+    }
+    .snapshot-list li strong { color: var(--text); font-weight: 600; }
+    .snapshot-ico {
+      flex-shrink: 0;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+    }
+    .snapshot-ico svg {
+      width: 15px;
+      height: 15px;
+      stroke: var(--accent);
+      fill: none;
+      stroke-width: 1.75;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top: 1px solid var(--border);
+    }
+    .stat { text-align: center; }
+    .stat-val {
+      font-family: var(--font-display);
+      font-size: 1.45rem;
+      font-style: italic;
+      color: var(--accent);
+      line-height: 1.15;
+    }
+    .stat-label {
+      font-size: 0.625rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    .section-head { margin-bottom: 1.25rem; }
+    .section-kicker {
+      font-size: 0.6875rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 4px;
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.65rem, 3.2vw, 2.15rem);
+      font-weight: 400;
+      font-style: italic;
+      margin: 0;
+      line-height: 1.12;
+    }
+
+    .about-card {
+      background: var(--bg-card);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 1.15rem 1.25rem;
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      line-height: 1.58;
+      max-width: 100%;
+    }
+    .about-card strong { color: var(--text); font-weight: 600; }
+
+    .timeline { position: relative; padding-left: 0; }
+    @media (min-width: 600px) {
+      .timeline { padding-left: 22px; }
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 5px;
+        top: 6px;
+        bottom: 6px;
+        width: 2px;
+        background: linear-gradient(180deg, var(--accent), var(--violet), transparent);
+        border-radius: 2px;
+        opacity: 0.45;
       }
+    }
+    .exp-block { position: relative; margin-bottom: 1.1rem; }
+    .exp-block:last-child { margin-bottom: 0; }
+    @media (min-width: 600px) {
+      .exp-block::before {
+        content: "";
+        position: absolute;
+        left: -22px;
+        top: 8px;
+        width: 11px;
+        height: 11px;
+        background: var(--bg-deep);
+        border: 2px solid var(--accent);
+        border-radius: 50%;
+        box-shadow: 0 0 0 3px rgba(62, 232, 200, 0.12);
+      }
+    }
+    .exp-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 1rem 1.1rem;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .exp-card:hover {
+      border-color: rgba(62, 232, 200, 0.16);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.2);
+    }
+    .exp-card-header {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 6px 12px;
+      margin-bottom: 8px;
+    }
+    .exp-role { font-size: 1rem; font-weight: 700; color: var(--text); margin: 0; }
+    .exp-meta { font-size: 0.8125rem; color: var(--text-muted); }
+    .exp-company {
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+    .exp-card ul { margin: 0; padding-left: 18px; color: var(--text-muted); font-size: 0.875rem; }
+    .exp-card li { margin-bottom: 5px; }
+    .exp-summary {
+      margin: 0;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      line-height: 1.58;
+    }
+    .exp-summary + .exp-summary { margin-top: 0.65rem; }
+    .exp-role-note {
+      margin: 0 0 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+    .nested-role {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+    }
+    .nested-role:first-of-type {
+      margin-top: 10px;
+      padding-top: 0;
+      border-top: none;
+    }
+    .nested-title { font-weight: 600; color: var(--text); font-size: 0.9rem; margin-bottom: 2px; }
+
+    /* Skills bento */
+    .skills-bento {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) {
+      .skills-bento {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+      }
+      .skill-panel--span2 { grid-column: span 2; }
+      .skill-panel--tools { grid-column: span 2; }
+    }
+    @media (min-width: 900px) {
+      .skills-bento {
+        grid-template-columns: repeat(12, 1fr);
+        grid-auto-flow: dense;
+      }
+      .skill-panel--testing { grid-column: span 7; }
+      .skill-panel--platforms { grid-column: span 5; }
+      .skill-panel--tools { grid-column: span 12; }
+      .skill-panel--ai { grid-column: span 5; }
+      .skill-panel--other { grid-column: span 7; }
+    }
+
+    .skill-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .skill-panel::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      opacity: 0.85;
+      pointer-events: none;
+    }
+    .skill-panel--testing::before { background: linear-gradient(90deg, var(--accent), transparent); }
+    .skill-panel--platforms::before { background: linear-gradient(90deg, #3b82f6, transparent); }
+    .skill-panel--tools::before { background: linear-gradient(90deg, var(--violet), rgba(62, 232, 200, 0.5), transparent); }
+    .skill-panel--ai::before { background: linear-gradient(90deg, var(--amber), transparent); }
+    .skill-panel--other::before { background: linear-gradient(90deg, rgba(255,255,255,0.35), transparent); }
+
+    .skill-panel-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .skill-panel-ico {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .skill-panel--testing .skill-panel-ico { background: var(--accent-dim); color: var(--accent); }
+    .skill-panel--platforms .skill-panel-ico { background: rgba(59, 130, 246, 0.12); color: #60a5fa; }
+    .skill-panel--tools .skill-panel-ico { background: var(--violet-soft); color: #a78bfa; }
+    .skill-panel--ai .skill-panel-ico { background: var(--amber-soft); color: var(--amber); }
+    .skill-panel--other .skill-panel-ico { background: rgba(255,255,255,0.06); color: var(--text-muted); }
+    .skill-panel-ico svg { width: 20px; height: 20px; stroke: currentColor; fill: none; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+    .skill-panel--ai .skill-panel-ico svg { stroke: var(--amber); }
+
+    .skill-panel h3 {
+      margin: 0;
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--text);
+      letter-spacing: -0.01em;
+    }
+    .skill-panel p.sub {
+      margin: 2px 0 0;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    .skill-flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .skill-flow span {
+      display: inline-block;
+      padding: 5px 10px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      letter-spacing: 0.01em;
+    }
+
+    .edu-grid {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 640px) {
+      .edu-grid { grid-template-columns: repeat(3, 1fr); }
+    }
+    .edu-card {
+      background: linear-gradient(160deg, var(--bg-card-solid) 0%, rgba(16, 20, 30, 0.92) 100%);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .edu-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 56px;
+      height: 56px;
+      background: radial-gradient(circle at 100% 0%, var(--accent-dim), transparent 65%);
+      pointer-events: none;
+    }
+    .edu-card h3 { margin: 0 0 4px; font-size: 0.9rem; font-weight: 600; line-height: 1.3; position: relative; z-index: 1; }
+    .edu-card p { margin: 0; font-size: 0.8125rem; color: var(--text-muted); position: relative; z-index: 1; }
+
+    .footer {
+      position: relative;
+      z-index: 2;
+      border-top: 1px solid var(--border);
+      padding: 1.25rem var(--section-x) 1.5rem;
+      text-align: center;
+      background: rgba(0,0,0,0.22);
+    }
+    .footer-copy {
+      margin: 0;
+      font-size: 0.75rem;
+      color: var(--text-muted);
     }
   </style>
 </head>
 <body>
-  <main class="container">
-    <div class="header-row">
-      <div class="header-left">
-        <h1>Ashar Khan</h1>
-        <p class="headline">QA Engineer | Campaign Operations Specialist</p>
-      </div>
-      <div class="contact" aria-label="Contact information">
-        <span>asharkhan11@gmail.com</span>
-        <span>+91 7019808073</span>
-        <span>Bangalore, India</span>
-        <a href="https://www.linkedin.com/in/Asharkhan10" target="_blank" rel="noreferrer">LinkedIn: Asharkhan10</a>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <div class="bg-stage" aria-hidden="true">
+    <div class="bg-mesh"></div>
+    <div class="bg-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <header class="nav-wrap" id="site-nav">
+    <div class="nav-inner">
+      <a class="logo" href="#top">Ashar <span>Khan</span></a>
+      <div class="nav-mid">
+        <nav aria-label="Primary">
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#education">Background</a></li>
+          </ul>
+        </nav>
       </div>
     </div>
+  </header>
 
-    <section>
-      <h2 class="section-title">Summary</h2>
-      <p>
-        QA Engineer with experience across seller support, campaign operations, and product quality for mobile, web, and backend systems. Progressed from resolving platform issues and documenting recurring defects to executing GTM campaigns, then owning functional, regression, API, DB, and release validation for production builds. Currently focused on Liabilities QA at Slice, with hands-on work in service migration validation, DC/DR sign-offs, event regression, automation, technical documentation, and AI-assisted internal tooling.
-      </p>
-    </section>
-
-    <section>
-      <h2 class="section-title">Work Experience</h2>
-      <div class="experience-item">
-        <span class="job-title">Slice – QA Engineer</span>
-        <div class="job-meta">August 2025 – Present | Bangalore, India</div>
-        <ul>
-          <li>Led end-to-end QA for Liabilities across iOS and Android, covering creation, accrual, payout, TDS, pre-closure, and nominee flows.</li>
-          <li>Served as Primary DRI for Liabilities core service revamp, designing JSON diff-based migration validation and enabling the first live user migration.</li>
-          <li>Owned frontend, backend API and DB testing for a new product, raising 30+ blocker/P0/P1 bugs before release.</li>
-          <li>Independently signed off on the bi-annual DC/DR compliance drill, identifying and validating fixes for 2 production issues in real time.</li>
-          <li>Built and deployed an AI-assisted Fixed Deposit Interest Calculator as an internal tool.</li>
-          <li>Improved QA enablement through Mixpanel event-regression dashboards, 10+ automation PRs, Kafka setup docs, and E2E Liabilities flow documentation.</li>
-        </ul>
-      </div>
-      <div class="experience-item">
-        <div class="company-name">CRED</div>
-        <div class="job-meta">March 2022 – July 2025 | Bangalore, India</div>
-        <div class="internal-movement">
-          <div class="role-title">QA Engineer, Central Experience Team</div>
-          <div class="job-meta">May 2023 – July 2025</div>
-          <ul>
-            <li>Owned functional, regression, and sanity testing for mobile app releases across production builds.</li>
-            <li>Designed and executed test cases from product requirements, covering UI/UX, backend integrations, and performance checks.</li>
-            <li>Partnered with Backend, Frontend, QA, Product, and Analytics teams to drive defect resolution and feature rollouts.</li>
-            <li>Used JIRA for bug tracking, root cause analysis, sprint planning, and issue traceability.</li>
-            <li>Validated and debugged REST APIs in Postman, covering response accuracy, data integrity, and authentication flows.</li>
-          </ul>
+  <main id="main">
+    <section class="section section--hero" id="top" aria-labelledby="hero-heading">
+      <div class="hero-grid">
+        <div class="hero">
+          <div class="hero-badge">
+            <span class="hero-badge-dot" aria-hidden="true"></span>
+            QA Engineer · Fintech &amp; consumer products
+          </div>
+          <h1 id="hero-heading">Hi, I’m <em>Ashar Khan</em></h1>
+          <p class="hero-tagline">I help teams ship fintech and consumer products with calmer releases — from exploratory work through APIs, data paths, and what happens in production.</p>
+          <p class="hero-loc">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Bangalore, India
+          </p>
+          <p class="hero-email">
+            <a href="mailto:asharkhan11@gmail.com?subject=Connecting%20via%20portfolio">asharkhan11@gmail.com</a>
+          </p>
+          <div class="hero-cta">
+            <a class="btn btn--primary" href="tel:+917019808073" aria-label="Call +91 7019808073">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              +91 7019808073
+            </a>
+            <a class="btn btn--ghost" href="https://www.linkedin.com/in/Asharkhan10" target="_blank" rel="noopener noreferrer" aria-label="Open LinkedIn profile">
+              <svg class="btn-ico--linkedin" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+          </div>
         </div>
-        <div class="internal-movement">
-          <div class="role-title">Campaign Operations, Central Experience Team</div>
-          <div class="job-meta">March 2022 – May 2023</div>
-          <ul>
-            <li>Led end-to-end execution of CRED campaigns and GTM launches with high accuracy and zero execution errors.</li>
-            <li>Managed in-app touchpoint dependencies and resolved technical blockers to ensure seamless campaign releases.</li>
-            <li>Maintained SOPs and business review documentation while automating repetitive workflows using low-code and AI tools.</li>
-          </ul>
+
+        <div class="hero-visual">
+          <div class="hero-svg-wrap" aria-hidden="true">
+            <svg viewBox="0 0 360 360" width="100%" height="100%" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <linearGradient id="hg1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#3ee8c8" stop-opacity="0.5"/>
+                  <stop offset="100%" stop-color="#8b7cf6" stop-opacity="0.2"/>
+                </linearGradient>
+                <pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse">
+                  <circle cx="2" cy="2" r="0.75" fill="rgba(255,255,255,0.12)"/>
+                </pattern>
+              </defs>
+              <rect width="360" height="360" fill="url(#dots)" opacity="0.5"/>
+              <g fill="none" stroke-width="1" opacity="0.9">
+                <path d="M180 40 L180 320 M40 180 L320 180" stroke="rgba(255,255,255,0.06)"/>
+                <rect x="90" y="90" width="180" height="180" rx="8" stroke="url(#hg1)" transform="rotate(12 180 180)"/>
+                <rect x="90" y="90" width="180" height="180" rx="8" stroke="rgba(139,124,246,0.25)" transform="rotate(-8 180 180)"/>
+              </g>
+              <circle cx="180" cy="180" r="6" fill="#3ee8c8" opacity="0.85"/>
+              <circle cx="180" cy="180" r="52" fill="none" stroke="url(#hg1)" stroke-width="0.75" opacity="0.7"/>
+              <circle cx="180" cy="180" r="88" fill="none" stroke="rgba(139,124,246,0.2)" stroke-width="0.5"/>
+            </svg>
+          </div>
+          <div class="hero-card">
+            <p class="snapshot-kicker">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+              What I lean into
+            </p>
+            <ul class="snapshot-list">
+              <li>
+                <span class="snapshot-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></span>
+                <span><strong>End-to-end product quality</strong> — especially regulated and money-adjacent flows on mobile and backend.</span>
+              </li>
+              <li>
+                <span class="snapshot-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="m9 15 2 2 4-4"/></svg></span>
+                <span><strong>Big migrations &amp; cutovers</strong> — making sure data and behaviour line up before users ever feel risk.</span>
+              </li>
+              <li>
+                <span class="snapshot-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span>
+                <span><strong>Resilience mindset</strong> — drills, prod-like checks, and staying useful when things get noisy.</span>
+              </li>
+              <li>
+                <span class="snapshot-ico" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><path d="M8 7h8"/><path d="M8 11h6"/></svg></span>
+                <span><strong>Team enablement</strong> — clearer docs, lighter automation, and signals people actually use after launch.</span>
+              </li>
+            </ul>
+            <div class="stat-row" aria-label="Quick facts">
+              <div class="stat">
+                <div class="stat-val">5+</div>
+                <div class="stat-label">Years in tech</div>
+              </div>
+              <div class="stat">
+                <div class="stat-val">Bangalore</div>
+                <div class="stat-label">India</div>
+              </div>
+              <div class="stat">
+                <div class="stat-val">QA</div>
+                <div class="stat-label">Core craft</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div class="experience-item">
-        <span class="job-title">Amazon – Seller Support Associate</span>
-        <div class="job-meta">January 2021 – March 2022 | Bangalore, India</div>
-        <ul>
-          <li>Resolved listing, payment, and account access issues through root cause analysis.</li>
-          <li>Identified platform defects and escalated recurring issues to technical teams.</li>
-          <li>Maintained customer satisfaction through timely resolution, clear communication, and knowledge base documentation.</li>
-        </ul>
+    </section>
+
+    <section class="section" id="about" aria-labelledby="about-title">
+      <div class="section-head">
+        <p class="section-kicker">About</p>
+        <h2 class="section-title" id="about-title">A generalist path, a specialist lens</h2>
+      </div>
+      <div class="about-card">
+        I started in customer-facing and ops-heavy roles, which taught me how breaks in software feel to real people. That turned into owning launches and in-app experiences, and eventually into <strong>deep QA for mobile and backend systems</strong> in fast-moving fintech. Today I care most about <strong>clarity under complexity</strong>: contracts, data, events, and the story your dashboards tell after you ship. I work out of <strong>Bangalore</strong>, currently with <strong>Slice</strong>, and I’m happiest when quality work shortens the distance between “we think it’s ready” and “we trust it in the wild.”
       </div>
     </section>
 
-    <section>
-      <h2 class="section-title">Education</h2>
-      <ul>
-        <li>
-          <strong>Bachelor of Computer Applications (BCA)</strong> – Jain University<br>
-          <span class="edu-meta">Graduated: 2020 | CGPA: 7.3</span>
-        </li>
-        <li>
-          <strong>Jain Pre-University – PUC</strong>, 70%
-        </li>
-        <li>
-          <strong>St. Joseph’s Boys High School – SSLC</strong>, 83%
-        </li>
-      </ul>
-    </section>
-
-    <section>
-      <h2 class="section-title">Technical Skills</h2>
-      <div class="skill-category">
-        <div class="skill-category-title">Testing</div>
-        <ul class="skills-list">
-          <li>Manual Testing</li>
-          <li>Functional Testing</li>
-          <li>Regression Testing</li>
-          <li>API Testing</li>
-          <li>DB Testing</li>
-          <li>Events Testing</li>
-        </ul>
+    <section class="section" id="experience" aria-labelledby="exp-title">
+      <div class="section-head">
+        <p class="section-kicker">Career</p>
+        <h2 class="section-title" id="exp-title">Where I’ve spent my time</h2>
       </div>
-      <div class="skill-category">
-        <div class="skill-category-title">Tools</div>
-        <ul class="skills-list">
-          <li>Postman</li>
-          <li>Charles Proxy</li>
-          <li>JIRA</li>
-          <li>Mixpanel</li>
-          <li>SQL</li>
-          <li>Kafka</li>
-          <li>Git</li>
-          <li>Grafana</li>
-          <li>Argo CD</li>
-          <li>Firebase</li>
-        </ul>
-      </div>
-      <div class="skill-category">
-        <div class="skill-category-title">Platforms</div>
-        <ul class="skills-list">
-          <li>iOS</li>
-          <li>Android</li>
-          <li>Web</li>
-          <li>REST APIs</li>
-        </ul>
-      </div>
-      <div class="skill-category">
-        <div class="skill-category-title">AI</div>
-        <ul class="skills-list">
-          <li>Claude Code (custom skills, MCP integrations, connectors)</li>
-          <li>Cursor (AI-assisted code development)</li>
-        </ul>
-      </div>
-      <div class="skill-category">
-        <div class="skill-category-title">Others</div>
-        <ul class="skills-list">
-          <li>Test Case Design</li>
-          <li>AI Automation</li>
-          <li>Technical Documentation</li>
-          <li>Confluence</li>
-        </ul>
+      <div class="timeline">
+        <article class="exp-block">
+          <div class="exp-card">
+            <div class="exp-company">Slice</div>
+            <div class="exp-card-header">
+              <h3 class="exp-role">QA Engineer</h3>
+              <span class="exp-meta">2025 – Present · Bangalore</span>
+            </div>
+            <p class="exp-summary">Fintech quality with a bias toward <strong>money-adjacent flows</strong> — mobile and services working together, not in silos.</p>
+            <p class="exp-summary">I’m especially drawn to <strong>migration and platform shifts</strong>: proving parity before traffic moves, and keeping teams unblocked when the surface area is huge.</p>
+          </div>
+        </article>
+        <article class="exp-block">
+          <div class="exp-card">
+            <div class="exp-company">CRED</div>
+            <div class="exp-card-header">
+              <h3 class="exp-role">Central Experience</h3>
+              <span class="exp-meta">2022 – 2025 · Bangalore</span>
+            </div>
+            <p class="exp-role-note">QA Engineer</p>
+            <p class="exp-summary">Owned how <strong>consumer mobile releases</strong> felt in the wild — pairing with product and platform teams, chasing regressions, and treating APIs as part of the UX story.</p>
+            <p class="exp-role-note">Campaign operations</p>
+            <p class="exp-summary">Earlier, I lived in <strong>launch rhythm</strong>: coordinating touchpoints, de-risking last-mile issues, and building habits that scaled when the org moved faster.</p>
+          </div>
+        </article>
+        <article class="exp-block">
+          <div class="exp-card">
+            <div class="exp-company">Amazon</div>
+            <div class="exp-card-header">
+              <h3 class="exp-role">Seller support</h3>
+              <span class="exp-meta">2021 – 2022 · Bangalore</span>
+            </div>
+            <p class="exp-summary">Where I learned to <strong>debug reality</strong> — messy edge cases, unclear ownership, and the patience to turn patterns into fixes upstream.</p>
+          </div>
+        </article>
       </div>
     </section>
 
+    <section class="section" id="skills" aria-labelledby="skills-title">
+      <div class="section-head">
+        <p class="section-kicker">Toolkit</p>
+        <h2 class="section-title" id="skills-title">How I work</h2>
+      </div>
+      <div class="skills-bento">
+        <article class="skill-panel skill-panel--testing">
+          <div class="skill-panel-head">
+            <div class="skill-panel-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <div>
+              <h3>Testing &amp; release</h3>
+              <p class="sub">Depth follows risk: focused passes before ship, wider nets when money, contracts, or migrations are in play.</p>
+            </div>
+          </div>
+          <div class="skill-flow">
+            <span>Exploratory &amp; scripted</span><span>Regression</span><span>APIs</span><span>Data &amp; DB</span><span>Events</span><span>Release gates</span>
+          </div>
+        </article>
 
+        <article class="skill-panel skill-panel--platforms">
+          <div class="skill-panel-head">
+            <div class="skill-panel-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+            </div>
+            <div>
+              <h3>Where I exercise QA</h3>
+              <p class="sub">Flows that jump between app, API, and data — so gaps don’t hide at the seams.</p>
+            </div>
+          </div>
+          <div class="skill-flow">
+            <span>iOS &amp; Android</span><span>Web</span><span>Services &amp; REST</span>
+          </div>
+        </article>
+
+        <article class="skill-panel skill-panel--tools">
+          <div class="skill-panel-head">
+            <div class="skill-panel-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+            <div>
+              <h3>Toolbox clusters</h3>
+              <p class="sub">How I reproduce issues, trace ownership, and read what production is really doing — the stack shifts; the habits don’t.</p>
+            </div>
+          </div>
+          <div class="skill-flow">
+            <span>HTTP &amp; proxies</span><span>Issue tracking</span><span>Product analytics</span><span>SQL &amp; streams</span><span>Git &amp; CI/CD UIs</span><span>Dashboards &amp; alerts</span>
+          </div>
+        </article>
+
+        <article class="skill-panel skill-panel--ai">
+          <div class="skill-panel-head">
+            <div class="skill-panel-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 2v4"/><path d="M12 18v4"/><path d="m4.93 4.93 2.83 2.83"/><path d="m16.24 16.24 2.83 2.83"/><path d="M2 12h4"/><path d="M18 12h4"/><path d="m4.93 19.07 2.83-2.83"/><path d="m16.24 7.76 2.83-2.83"/></svg>
+            </div>
+            <div>
+              <h3>Modern tooling</h3>
+              <p class="sub">Assistants and small automations for boilerplate; humans still sign off where stakes are high.</p>
+            </div>
+          </div>
+          <div class="skill-flow">
+            <span>AI-assisted dev</span><span>Internal tools</span><span>Workflow glue</span>
+          </div>
+        </article>
+
+        <article class="skill-panel skill-panel--other">
+          <div class="skill-panel-head">
+            <div class="skill-panel-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/><path d="M16 13H8"/><path d="M16 17H8"/><path d="M10 9H8"/></svg>
+            </div>
+            <div>
+              <h3>Communication</h3>
+              <p class="sub">Write-ups and handovers that stay legible after context has moved on.</p>
+            </div>
+          </div>
+          <div class="skill-flow">
+            <span>Clear write-ups</span><span>Runbooks</span><span>Lightweight automation</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="education" aria-labelledby="edu-title">
+      <div class="section-head">
+        <p class="section-kicker">Background</p>
+        <h2 class="section-title" id="edu-title">Education</h2>
+      </div>
+      <div class="edu-grid">
+        <div class="edu-card">
+          <h3>Bachelor of Computer Applications (BCA)</h3>
+          <p>Jain University · graduated 2020</p>
+        </div>
+        <div class="edu-card">
+          <h3>Pre-University (PUC)</h3>
+          <p>Jain Pre-University College</p>
+        </div>
+        <div class="edu-card">
+          <h3>SSLC</h3>
+          <p>St. Joseph’s Boys High School</p>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="footer">
+    <p class="footer-copy">© Ashar Khan · Bangalore</p>
+  </footer>
+
+  <script>
+    (function () {
+      var nav = document.getElementById('site-nav');
+      function onScroll() {
+        if (window.scrollY > 24) nav.classList.add('scrolled');
+        else nav.classList.remove('scrolled');
+      }
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+  </script>
 </body>
 </html>
