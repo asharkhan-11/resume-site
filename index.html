@@ -5,334 +5,308 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Ashar Khan - Resume</title>
   <style>
+    :root {
+      --bg: #f7f7f5;
+      --surface: #ffffff;
+      --text: #1f2933;
+      --muted: #5f6b76;
+      --border: #d9ded8;
+      --accent: #2f5d50;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #fff;
-      color: #222;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 14px;
       margin: 0;
-      padding: 0;
+      padding: 28px 18px;
       min-height: 100vh;
-      overflow-x: hidden;
+      line-height: 1.45;
     }
+
     .container {
-      max-width: 900px;
-      margin: 48px auto 40px auto;
-      background: #f5f5f5;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-      border-radius: 12px;
-      padding: 40px 28px 28px 28px;
-      border: 1px solid #e0e0e0;
+      max-width: 920px;
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 36px 40px;
     }
+
+    .header-row {
+      text-align: center;
+      padding-bottom: 22px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+    }
+
     h1 {
-      font-size: 2.2em;
-      margin-bottom: 0.15em;
-      color: #222;
-      font-weight: bold;
-      letter-spacing: 1px;
-      display: flex;
-      align-items: center;
-      gap: 12px;
+      margin: 0 0 4px;
+      color: var(--text);
+      font-size: clamp(1.55rem, 4vw, 2rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
     }
-    .profile-icon {
-      display: inline-block;
-      width: 32px;
-      height: 32px;
-      background: #e0e0e0;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1em;
-      color: #555;
-    }
-    .header-accent {
-      display: block;
-      width: 48px;
-      height: 4px;
-      border-radius: 2px;
-      background: #222;
-      margin: 0.2em 0 1.2em 0;
-    }
-    .contact {
-      font-size: 1.08em;
-      margin-bottom: 1.5em;
-      color: #444;
-    }
-    .contact a {
-      color: #222;
-      text-decoration: underline;
+
+    .headline {
+      color: var(--muted);
+      font-size: 0.9rem;
       font-weight: 500;
+      margin: 0;
     }
+
+    .contact {
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 14px;
+      justify-content: center;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .contact span,
+    .contact a {
+      color: inherit;
+      font-size: 0.85rem;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
     .contact a:hover {
-      color: #555;
+      text-decoration: underline;
     }
-    /* Fade-in animation for sections */
-    .reveal {
-      opacity: 0;
-      transition: opacity 0.6s, transform 0.6s;
-      transform: translateY(24px);
-    }
-    .reveal.active {
-      opacity: 1;
-      transform: none;
-      transition: opacity 0.6s, transform 0.6s;
-    }
+
     section {
-      margin-bottom: 2em;
+      margin-bottom: 24px;
     }
+
+    section:last-child {
+      margin-bottom: 0;
+    }
+
     h2.section-title {
-      border-bottom: 2px solid #222;
-      padding-bottom: 4px;
-      margin-bottom: 0.7em;
-      font-size: 1.15em;
-      color: #222;
-      font-weight: bold;
-      letter-spacing: 0.5px;
-      background: none;
-      opacity: 1;
-      animation: none;
-      text-shadow: none;
+      color: var(--accent);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      margin: 0 0 10px;
+      text-transform: uppercase;
     }
+
+    p {
+      margin: 0;
+    }
+
     ul {
-      margin: 0.5em 0 0.5em 1.5em;
+      margin: 8px 0 0;
+      padding-left: 20px;
     }
+
+    li {
+      margin-bottom: 5px;
+      padding-left: 2px;
+    }
+
     .skills-list, .other-skills-list, .interests-list {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px 18px;
+      gap: 0 6px;
       list-style: none;
       padding: 0;
-      margin: 0.5em 0 0.5em 0;
+      margin: 0;
     }
+
     .skills-list li, .other-skills-list li, .interests-list li {
-      background: #e0e0e0;
-      color: #222;
-      padding: 4px 10px;
-      border-radius: 5px;
-      font-size: 1em;
-      transition: background 0.2s, color 0.2s;
-      cursor: default;
-      box-shadow: none;
+      color: var(--muted);
+      padding: 0;
+      font-size: 0.82rem;
+      margin: 0;
     }
-    .skills-list li:hover, .other-skills-list li:hover, .interests-list li:hover {
-      background: #d1d1d1;
-      color: #111;
+
+    .skills-list li:not(:last-child)::after,
+    .other-skills-list li:not(:last-child)::after,
+    .interests-list li:not(:last-child)::after {
+      content: ",";
     }
+
+    .skill-category {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .skill-category:first-of-type {
+      margin-top: 0;
+    }
+
+    .skill-category-title {
+      color: var(--text);
+      font-size: 0.86rem;
+      font-weight: 700;
+      flex: 0 0 76px;
+      margin-bottom: 0;
+    }
+
+    .experience-item {
+      margin-top: 20px;
+    }
+
+    .experience-item:first-of-type {
+      margin-top: 0;
+    }
+
     .job-title {
-      font-weight: bold;
-      color: #222;
+      color: var(--text);
+      font-size: 0.98rem;
+      font-weight: 700;
     }
+
     .job-meta {
-      font-size: 0.98em;
-      color: #555;
-      margin-bottom: 0.2em;
+      color: var(--muted);
+      font-size: 0.84rem;
+      margin-top: 2px;
     }
+
     .company-name {
       font-weight: 700;
-      color: #222;
-      letter-spacing: 0.2px;
+      color: var(--text);
+      font-size: 0.98rem;
     }
-    .movement-label {
-      display: inline-block;
-      margin-top: 0.35em;
-      font-size: 0.82em;
-      font-weight: 700;
-      color: #444;
-      text-transform: uppercase;
-      letter-spacing: 0.7px;
-    }
+
     .internal-movement {
-      margin-top: 0.8em;
+      margin-top: 12px;
       padding-left: 14px;
-      border-left: 2px solid #d6d6d6;
+      border-left: 2px solid #eef1ed;
     }
+
     .internal-movement + .internal-movement {
-      margin-top: 1em;
+      margin-top: 14px;
     }
+
     .role-title {
+      color: var(--text);
       font-weight: 600;
-      color: #222;
-      margin-bottom: 0.1em;
+      margin-bottom: 1px;
     }
-    .internal-movement ul {
-      margin-top: 0.35em;
-      margin-bottom: 0.2em;
-    }
+
     .edu-meta {
-      font-size: 0.98em;
-      color: #555;
-      margin-bottom: 0.2em;
+      color: var(--muted);
+      font-size: 0.84rem;
     }
-    @media (max-width: 600px) {
+
+    @media (max-width: 720px) {
+      body {
+        padding: 14px;
+      }
+
       .container {
-        padding: 12px 2vw;
+        border-radius: 12px;
+        padding: 24px 20px;
       }
-      h1 {
-        font-size: 1.1em;
-        word-break: break-word;
-        overflow-wrap: break-word;
-      }
-      .contact {
-        font-size: 0.95em;
-        word-break: break-word;
-        overflow-wrap: break-word;
-      }
-      .header-accent {
-        width: 32px;
-        height: 3px;
-      }
-    }
-    .profile-photo {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 8px;
-      border: 2px solid #222;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.10);
-      background: #e0e0e0;
-      position: absolute;
-      top: 24px;
-      right: 28px;
-      transition: box-shadow 0.2s;
-      z-index: 2;
-    }
-    .container {
-      position: relative;
-      padding-top: 40px;
-    }
-    @media (max-width: 600px), (max-height: 600px), (pointer: coarse) and (max-device-width: 900px) {
-      .profile-photo {
-        display: none !important;
-      }
-    }
-    @media (max-width: 600px) {
+
       .header-row {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        gap: 8px;
-        margin-top: 0;
-        flex-wrap: wrap;
+        margin-bottom: 24px;
+        padding-bottom: 20px;
       }
-      .header-left {
-        min-width: 0;
-        flex: 1;
-        order: 1;
-        word-break: break-word;
-        overflow-wrap: break-word;
-      }
-      h1 {
-        font-size: 1em;
-        word-break: break-word;
-        overflow-wrap: break-word;
-      }
+
       .contact {
-        font-size: 0.85em;
-        word-break: break-word;
-        overflow-wrap: break-word;
+        justify-content: center;
+        margin-top: 10px;
       }
-      .container {
-        padding-top: 8px;
+
+      .skill-category {
+        display: block;
       }
-    }
-    @media (max-width: 480px) {
-      .profile-photo {
-        width: 36px;
-        height: 36px;
+
+      .skill-category-title {
+        margin-bottom: 2px;
       }
-      h1 {
-        font-size: 0.95em;
-      }
-      .contact {
-        font-size: 0.8em;
-      }
-    }
-    .profile-photo:hover {
-      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
-    }
-    html {
-      scroll-behavior: smooth;
     }
   </style>
 </head>
 <body>
-  <div class="container" style="position:relative;">
-    <img src="profile.png" alt="Profile Photo" class="profile-photo" />
+  <main class="container">
     <div class="header-row">
       <div class="header-left">
-        <h1 style="margin:0; font-size:2em; color:#222; font-weight:bold; letter-spacing:1px;">Ashar Khan</h1>
-        <div class="contact">
-          <span>asharkhan11@gmail.com</span> &nbsp;|&nbsp;
-          <span>+91 7019808073</span> &nbsp;|&nbsp;
-          <span>Bangalore, India</span> &nbsp;|&nbsp;
-          <a href="https://www.linkedin.com/in/Asharkhan10" target="_blank">LinkedIn: Asharkhan10</a>
-        </div>
+        <h1>Ashar Khan</h1>
+        <p class="headline">QA Engineer | Campaign Operations Specialist</p>
+      </div>
+      <div class="contact" aria-label="Contact information">
+        <span>asharkhan11@gmail.com</span>
+        <span>+91 7019808073</span>
+        <span>Bangalore, India</span>
+        <a href="https://www.linkedin.com/in/Asharkhan10" target="_blank" rel="noreferrer">LinkedIn: Asharkhan10</a>
       </div>
     </div>
 
-    <section class="reveal">
+    <section>
       <h2 class="section-title">Summary</h2>
       <p>
-        Quality Assurance & Campaign Operations Specialist with 3+ years of experience in manual testing, release validation, and campaign execution across mobile and web platforms. Adept in functional testing, defect tracking, and QA toolsets including JIRA, Postman, Charles Proxy, and Mixpanel. Experienced in regression testing, debugging, test case design, and collaborating cross-functionally with product, engineering, and analytics teams. Strong background in automation and process optimization using low-code tools and AI agents.
+        QA Engineer with experience across seller support, campaign operations, and product quality for mobile, web, and backend systems. Progressed from resolving platform issues and documenting recurring defects to executing GTM campaigns, then owning functional, regression, API, DB, and release validation for production builds. Currently focused on Liabilities QA at Slice, with hands-on work in service migration validation, DC/DR sign-offs, event regression, automation, technical documentation, and AI-assisted internal tooling.
       </p>
     </section>
 
-    <section class="reveal">
+    <section>
       <h2 class="section-title">Work Experience</h2>
-      <div>
+      <div class="experience-item">
         <span class="job-title">Slice – QA Engineer</span>
         <div class="job-meta">August 2025 – Present | Bangalore, India</div>
         <ul>
-          <li>Led end-to-end QA for Liabilities team across iOS and Android — covering creation, accrual, payout, TDS, pre-closure, and nominee flows across multiple release cycles.</li>
-          <li>Was appointed Primary DRI for Liabilities core service revamp. Designed JSON diff-based migration validation, achieved first live user migration to the new service, and delivered full testing documentation with KT.</li>
-          <li>Owned backend API and DB testing for a new product called Project Atom (Pots/Stash) — Raised ~30+ blocker/P0/P1 bugs and got them fixed before release.</li>
-          <li>Independently signed off on the bi-annual Data Center to Disaster Recovery compliance drill — identified 2 production issues in real time, escalated, and confirmed fixes within the drill window.</li>
-          <li>Built and deployed an Fixed Deposit Interest Calculator into the internal Gandiva dashboard completely using AI.</li>
-          <li>Set up Mixpanel event-regression dashboards for staging and production.</li>
-          <li>Contributed to the development of 10+ automation PRs using AI for multiple flows into the testing suite, which runs on CI/CD pipeline.</li>
-          <li>Authored Kafa setup and testing guide on Confluence; Setup E2E Liabilities flowchart and documented the same.</li>
+          <li>Led end-to-end QA for Liabilities across iOS and Android, covering creation, accrual, payout, TDS, pre-closure, and nominee flows.</li>
+          <li>Served as Primary DRI for Liabilities core service revamp, designing JSON diff-based migration validation and enabling the first live user migration.</li>
+          <li>Owned backend API and DB testing for a new product called Project, raising 30+ blocker/P0/P1 bugs before release.</li>
+          <li>Independently signed off on the bi-annual DC/DR compliance drill, identifying and validating fixes for 2 production issues in real time.</li>
+          <li>Built and deployed an AI-assisted Fixed Deposit Interest Calculator as an internal tool.</li>
+          <li>Improved QA enablement through Mixpanel event-regression dashboards, 10+ automation PRs, Kafka setup docs, and E2E Liabilities flow documentation.</li>
         </ul>
       </div>
-      <div style="margin-top:1.2em;">
+      <div class="experience-item">
         <div class="company-name">CRED</div>
         <div class="job-meta">March 2022 – July 2025 | Bangalore, India</div>
-        <div class="movement-label">Internal Movements</div>
         <div class="internal-movement">
           <div class="role-title">QA Engineer, Central Experience Team</div>
           <div class="job-meta">May 2023 – July 2025</div>
           <ul>
-            <li>Conducted comprehensive end-to-end testing—including functional, regression, and sanity testing—for mobile app releases, ensuring production-grade quality across all builds.</li>
-            <li>Designed and executed detailed test cases based on product requirements, validating UI/UX consistency, backend integrations, and performance benchmarks.</li>
-            <li>Collaborated cross-functionally with Backend, Frontend, QA, Product, and Analytics teams to drive defect resolution and ensure timely, high-quality feature rollouts.</li>
-            <li>Leveraged JIRA for efficient bug tracking, root cause analysis, and sprint planning, maintaining clear documentation and traceability of issues.</li>
-            <li>Performed RESTful API validation and debugging using Postman, verifying request/response accuracy, data integrity, and authentication flows.</li>
+            <li>Owned functional, regression, and sanity testing for mobile app releases across production builds.</li>
+            <li>Designed and executed test cases from product requirements, covering UI/UX, backend integrations, and performance checks.</li>
+            <li>Partnered with Backend, Frontend, QA, Product, and Analytics teams to drive defect resolution and feature rollouts.</li>
+            <li>Used JIRA for bug tracking, root cause analysis, sprint planning, and issue traceability.</li>
+            <li>Validated and debugged REST APIs in Postman, covering response accuracy, data integrity, and authentication flows.</li>
           </ul>
         </div>
         <div class="internal-movement">
           <div class="role-title">Campaign Operations, Central Experience Team</div>
           <div class="job-meta">March 2022 – May 2023</div>
           <ul>
-            <li>Spearheaded multiple go-to-market (GTM) launches, delivering each with 100% accuracy and zero execution errors.</li>
-            <li>Led end-to-end execution of all CRED campaigns, managing in-app touchpoint dependencies to ensure successful outcomes.</li>
-            <li>Utilized Cline to proactively resolve technical blockers, ensuring seamless release campaigns.</li>
-            <li>Developed and maintained Standard Operating Procedures, Weekly Business Reviews, and Monthly Business Reviews to streamline campaign operations.</li>
-            <li>Automated repetitive workflows using low-code platforms and AI tools, significantly reducing manual effort while improving accuracy and efficiency.</li>
+            <li>Led end-to-end execution of CRED campaigns and GTM launches with high accuracy and zero execution errors.</li>
+            <li>Managed in-app touchpoint dependencies and resolved technical blockers to ensure seamless campaign releases.</li>
+            <li>Maintained SOPs and business review documentation while automating repetitive workflows using low-code and AI tools.</li>
           </ul>
         </div>
       </div>
-      <div style="margin-top:1.2em;">
+      <div class="experience-item">
         <span class="job-title">Amazon – Seller Support Associate</span>
         <div class="job-meta">January 2021 – March 2022 | Bangalore, India</div>
         <ul>
-          <li>Resolved platform-related issues around listings, payments, and account access through root cause analysis and error tracking.</li>
-          <li>Identified platform bugs and collaborated with technical teams to escalate and fix recurring issues.</li>
-          <li>Documented common defects and contributed to knowledge bases to improve self-service resolution.</li>
-          <li>Maintained high customer satisfaction through timely issue resolution and clear communication.</li>
+          <li>Resolved listing, payment, and account access issues through root cause analysis.</li>
+          <li>Identified platform defects and escalated recurring issues to technical teams.</li>
+          <li>Maintained customer satisfaction through timely resolution, clear communication, and knowledge base documentation.</li>
         </ul>
       </div>
     </section>
 
-    <section class="reveal">
+    <section>
       <h2 class="section-title">Education</h2>
       <ul>
         <li>
@@ -340,7 +314,7 @@
           <span class="edu-meta">Graduated: 2020 | CGPA: 7.3</span>
         </li>
         <li>
-          <strong>Jain Pre-University – PUC</strong>, 69%
+          <strong>Jain Pre-University – PUC</strong>, 70%
         </li>
         <li>
           <strong>St. Joseph’s Boys High School – SSLC</strong>, 83%
@@ -348,50 +322,62 @@
       </ul>
     </section>
 
-    <section class="reveal">
+    <section>
       <h2 class="section-title">Technical Skills</h2>
-      <ul class="skills-list">
-        <li>Manual Testing</li>
-        <li>Functional Testing</li>
-        <li>Regression Testing</li>
-        <li>Test Case Design</li>
-        <li>JIRA</li>
-        <li>Postman</li>
-        <li>Mixpanel</li>
-        <li>Charles Proxy</li>
-        <li>Cline/Cursor</li>
-        <li>HTML/CSS</li>
-        <li>RDBMS</li>
-        <li>Kafka</li>
-        <li>Critical Thinking</li>
-        <li>Adaptability</li>
-        <li>Problem Solving</li>
-      </ul>
+      <div class="skill-category">
+        <div class="skill-category-title">Testing</div>
+        <ul class="skills-list">
+          <li>Manual Testing</li>
+          <li>Functional Testing</li>
+          <li>Regression Testing</li>
+          <li>API Testing</li>
+          <li>DB Testing</li>
+          <li>Events Testing</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <div class="skill-category-title">Tools</div>
+        <ul class="skills-list">
+          <li>Postman</li>
+          <li>Charles Proxy</li>
+          <li>JIRA</li>
+          <li>Mixpanel</li>
+          <li>SQL</li>
+          <li>Kafka</li>
+          <li>Git</li>
+          <li>Grafana</li>
+          <li>Argo CD</li>
+          <li>Firebase</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <div class="skill-category-title">Platforms</div>
+        <ul class="skills-list">
+          <li>iOS</li>
+          <li>Android</li>
+          <li>Web</li>
+          <li>REST APIs</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <div class="skill-category-title">AI</div>
+        <ul class="skills-list">
+          <li>Claude Code (custom skills, MCP integrations, connectors)</li>
+          <li>Cursor (AI-assisted code development)</li>
+        </ul>
+      </div>
+      <div class="skill-category">
+        <div class="skill-category-title">Others</div>
+        <ul class="skills-list">
+          <li>Test Case Design</li>
+          <li>AI Automation</li>
+          <li>Technical Documentation</li>
+          <li>Confluence</li>
+        </ul>
+      </div>
     </section>
 
 
-  </div>
-  <script>
-    // Scroll-triggered fade-in animation for sections
-    document.addEventListener('DOMContentLoaded', function () {
-      const reveals = document.querySelectorAll('.reveal');
-      const options = { threshold: 0.15 };
-      const revealOnScroll = new IntersectionObserver(function (entries) {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-          } else {
-            entry.target.classList.remove('active');
-          }
-        });
-      }, options);
-
-      reveals.forEach(section => {
-        section.classList.remove('slide-left', 'slide-right', 'zoom-in', 'bounce-in');
-        section.classList.add('fade-in');
-        revealOnScroll.observe(section);
-      });
-    });
-  </script>
+  </main>
 </body>
 </html>
