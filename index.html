@@ -127,6 +127,37 @@
       color: #555;
       margin-bottom: 0.2em;
     }
+    .company-name {
+      font-weight: 700;
+      color: #222;
+      letter-spacing: 0.2px;
+    }
+    .movement-label {
+      display: inline-block;
+      margin-top: 0.35em;
+      font-size: 0.82em;
+      font-weight: 700;
+      color: #444;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+    }
+    .internal-movement {
+      margin-top: 0.8em;
+      padding-left: 14px;
+      border-left: 2px solid #d6d6d6;
+    }
+    .internal-movement + .internal-movement {
+      margin-top: 1em;
+    }
+    .role-title {
+      font-weight: 600;
+      color: #222;
+      margin-bottom: 0.1em;
+    }
+    .internal-movement ul {
+      margin-top: 0.35em;
+      margin-bottom: 0.2em;
+    }
     .edu-meta {
       font-size: 0.98em;
       color: #555;
@@ -252,33 +283,42 @@
         <span class="job-title">Slice – QA Engineer</span>
         <div class="job-meta">August 2025 – Present | Bangalore, India</div>
         <ul>
-          <li>Conducted comprehensive end-to-end testing for all backend and frontend releases, ensuring production-grade quality and zero critical bugs in feature rollouts.</li>
-          <li>Executed and validated data center (DC) to disaster recovery (DR) and DR to DC migrations, ensuring zero data loss and maintaining system integrity throughout the process.</li>
-          <li>Led end-to-end testing for Slice liabilities team backend code revamp, including Kafka payload validation and comprehensive database testing to ensure data consistency and system reliability.</li>
-          <li>Created detailed product flowcharts to enhance team understanding of complex workflows and streamline regression testing processes, improving overall testing efficiency.</li>
+          <li>Led end-to-end QA for Liabilities team across iOS and Android — covering creation, accrual, payout, TDS, pre-closure, and nominee flows across multiple release cycles.</li>
+          <li>Was appointed Primary DRI for Liabilities core service revamp. Designed JSON diff-based migration validation, achieved first live user migration to the new service, and delivered full testing documentation with KT.</li>
+          <li>Owned backend API and DB testing for a new product called Project Atom (Pots/Stash) — Raised ~30+ blocker/P0/P1 bugs and got them fixed before release.</li>
+          <li>Independently signed off on the bi-annual Data Center to Disaster Recovery compliance drill — identified 2 production issues in real time, escalated, and confirmed fixes within the drill window.</li>
+          <li>Built and deployed an Fixed Deposit Interest Calculator into the internal Gandiva dashboard completely using AI.</li>
+          <li>Set up Mixpanel event-regression dashboards for staging and production.</li>
+          <li>Contributed to the development of 10+ automation PRs using AI for multiple flows into the testing suite, which runs on CI/CD pipeline.</li>
+          <li>Authored Kafa setup and testing guide on Confluence; Setup E2E Liabilities flowchart and documented the same.</li>
         </ul>
       </div>
       <div style="margin-top:1.2em;">
-        <span class="job-title">CRED – QA Engineer, Central Experience Team</span>
-        <div class="job-meta">May 2023 – July 2025 | Bangalore, India</div>
-        <ul>
-          <li>Conducted comprehensive end-to-end testing—including functional, regression, and sanity testing—for mobile app releases, ensuring production-grade quality across all builds.</li>
-          <li>Designed and executed detailed test cases based on product requirements, validating UI/UX consistency, backend integrations, and performance benchmarks.</li>
-          <li>Collaborated cross-functionally with Backend, Frontend, QA, Product, and Analytics teams to drive defect resolution and ensure timely, high-quality feature rollouts.</li>
-          <li>Leveraged JIRA for efficient bug tracking, root cause analysis, and sprint planning, maintaining clear documentation and traceability of issues.</li>
-          <li>Performed RESTful API validation and debugging using Postman, verifying request/response accuracy, data integrity, and authentication flows.</li>
-        </ul>
-      </div>
-      <div style="margin-top:1.2em;">
-        <span class="job-title">CRED – Campaign Opertaions, Central Experience Team</span>
-        <div class="job-meta">March 2022 – May 2023 | Bangalore, India</div>
-        <ul>
-          <li>Spearheaded multiple go-to-market (GTM) launches, delivering each with 100% accuracy and zero execution errors.</li>
-          <li>Led end-to-end execution of all CRED campaigns, managing in-app touchpoint dependencies to ensure successful outcomes.</li>
-          <li>Utilized Cline to proactively resolve technical blockers, ensuring seamless release campaigns.</li>
-          <li>Developed and maintained Standard Operating Procedures, Weekly Business Reviews, and Monthly Business Reviews to streamline campaign operations.</li>
-          <li>Automated repetitive workflows using low-code platforms and AI tools, significantly reducing manual effort while improving accuracy and efficiency.</li>
-        </ul>
+        <div class="company-name">CRED</div>
+        <div class="job-meta">March 2022 – July 2025 | Bangalore, India</div>
+        <div class="movement-label">Internal Movements</div>
+        <div class="internal-movement">
+          <div class="role-title">QA Engineer, Central Experience Team</div>
+          <div class="job-meta">May 2023 – July 2025</div>
+          <ul>
+            <li>Conducted comprehensive end-to-end testing—including functional, regression, and sanity testing—for mobile app releases, ensuring production-grade quality across all builds.</li>
+            <li>Designed and executed detailed test cases based on product requirements, validating UI/UX consistency, backend integrations, and performance benchmarks.</li>
+            <li>Collaborated cross-functionally with Backend, Frontend, QA, Product, and Analytics teams to drive defect resolution and ensure timely, high-quality feature rollouts.</li>
+            <li>Leveraged JIRA for efficient bug tracking, root cause analysis, and sprint planning, maintaining clear documentation and traceability of issues.</li>
+            <li>Performed RESTful API validation and debugging using Postman, verifying request/response accuracy, data integrity, and authentication flows.</li>
+          </ul>
+        </div>
+        <div class="internal-movement">
+          <div class="role-title">Campaign Operations, Central Experience Team</div>
+          <div class="job-meta">March 2022 – May 2023</div>
+          <ul>
+            <li>Spearheaded multiple go-to-market (GTM) launches, delivering each with 100% accuracy and zero execution errors.</li>
+            <li>Led end-to-end execution of all CRED campaigns, managing in-app touchpoint dependencies to ensure successful outcomes.</li>
+            <li>Utilized Cline to proactively resolve technical blockers, ensuring seamless release campaigns.</li>
+            <li>Developed and maintained Standard Operating Procedures, Weekly Business Reviews, and Monthly Business Reviews to streamline campaign operations.</li>
+            <li>Automated repetitive workflows using low-code platforms and AI tools, significantly reducing manual effort while improving accuracy and efficiency.</li>
+          </ul>
+        </div>
       </div>
       <div style="margin-top:1.2em;">
         <span class="job-title">Amazon – Seller Support Associate</span>
