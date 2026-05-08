@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Ashar Khan — Portfolio</title>
   <meta name="description" content="Portfolio of Ashar Khan — QA engineer building confidence in fintech products, mobile releases, and backend quality. Bangalore.">
   <meta name="theme-color" content="#06080c">
@@ -550,25 +550,22 @@
     }
     .exp-summary + .exp-summary { margin-top: 0.65rem; }
     .exp-role-note {
-      margin: 0 0 6px;
+      margin: 0 0 8px;
       font-size: 0.75rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       color: var(--text-muted);
     }
-    .nested-role {
-      margin-top: 12px;
-      padding-top: 12px;
+    .exp-card-header + .exp-role-note {
+      margin-top: 4px;
+    }
+    /* Space between role stints (e.g. CRED QA vs campaign ops) */
+    .exp-summary + .exp-role-note {
+      margin-top: 1.35rem;
+      padding-top: 1.25rem;
       border-top: 1px solid var(--border);
     }
-    .nested-role:first-of-type {
-      margin-top: 10px;
-      padding-top: 0;
-      border-top: none;
-    }
-    .nested-title { font-weight: 600; color: var(--text); font-size: 0.9rem; margin-bottom: 2px; }
-
     /* Skills bento */
     .skills-bento {
       display: grid;
@@ -678,9 +675,6 @@
       gap: 10px;
       grid-template-columns: 1fr;
     }
-    @media (min-width: 640px) {
-      .edu-grid { grid-template-columns: repeat(3, 1fr); }
-    }
     .edu-card {
       background: linear-gradient(160deg, var(--bg-card-solid) 0%, rgba(16, 20, 30, 0.92) 100%);
       border: 1px solid var(--border);
@@ -714,6 +708,188 @@
       margin: 0;
       font-size: 0.75rem;
       color: var(--text-muted);
+    }
+    .footer-egg-trigger {
+      cursor: help;
+      user-select: none;
+      -webkit-user-select: none;
+      border-bottom: 1px dotted transparent;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .footer:hover .footer-egg-trigger {
+      color: var(--accent);
+      border-bottom-color: rgba(62, 232, 200, 0.35);
+    }
+
+    .egg-toast {
+      position: fixed;
+      left: 50%;
+      bottom: max(24px, env(safe-area-inset-bottom, 24px));
+      transform: translateX(-50%) translateY(120%);
+      z-index: 300;
+      max-width: min(22rem, calc(100vw - 2rem));
+      padding: 12px 18px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      line-height: 1.45;
+      color: var(--text);
+      text-align: center;
+      background: rgba(16, 20, 30, 0.94);
+      border: 1px solid rgba(62, 232, 200, 0.25);
+      border-radius: 12px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.35s ease, opacity 0.35s ease;
+    }
+    .egg-toast.is-on {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* —— Mobile & small screens —— */
+    @media (max-width: 640px) {
+      :root {
+        --section-y: 2rem;
+        --section-x: max(1rem, env(safe-area-inset-left, 0px));
+        --nav-h: 52px;
+      }
+
+      body {
+        font-size: 16px;
+        -webkit-text-size-adjust: 100%;
+      }
+
+      .nav-wrap {
+        padding-top: max(8px, env(safe-area-inset-top, 0px));
+        padding-left: max(12px, env(safe-area-inset-left, 0px));
+        padding-right: max(12px, env(safe-area-inset-right, 0px));
+      }
+
+      .logo {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        padding: 4px 0;
+      }
+
+      .nav-links a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 12px;
+      }
+
+      .section {
+        padding-left: max(1rem, env(safe-area-inset-left, 0px));
+        padding-right: max(1rem, env(safe-area-inset-right, 0px));
+        padding-bottom: max(1.75rem, env(safe-area-inset-bottom, 0px));
+      }
+
+      .section--hero {
+        padding-top: calc(var(--nav-h) + max(0.75rem, env(safe-area-inset-top, 0px)));
+        padding-bottom: 2rem;
+      }
+
+      .hero h1 {
+        font-size: clamp(1.85rem, 9vw, 2.55rem);
+        line-height: 1.08;
+      }
+
+      .hero-tagline {
+        max-width: none;
+        font-size: 1rem;
+      }
+
+      .hero-email {
+        font-size: 1rem;
+      }
+
+      .hero-cta {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+      }
+
+      .hero-cta .btn {
+        width: 100%;
+        min-height: 48px;
+        font-size: 1rem;
+        padding: 12px 18px;
+      }
+
+      .hero-card {
+        padding: 16px 14px;
+      }
+
+      .stat-row {
+        gap: 8px;
+      }
+
+      .stat-val {
+        font-size: clamp(1.05rem, 5.5vw, 1.35rem);
+      }
+
+      .stat-label {
+        font-size: 0.625rem;
+        letter-spacing: 0.08em;
+      }
+
+      .section-title {
+        font-size: clamp(1.45rem, 6.5vw, 1.95rem);
+      }
+
+      .about-card {
+        padding: 1.1rem 1rem;
+        font-size: 1rem;
+      }
+
+      .exp-card {
+        padding: 1.1rem 1rem;
+      }
+
+      .exp-summary,
+      .exp-card ul {
+        font-size: 0.9375rem;
+      }
+
+      .skill-panel {
+        padding: 14px 14px;
+      }
+
+      .skill-panel p.sub {
+        font-size: 0.8125rem;
+        line-height: 1.45;
+      }
+
+      .skill-flow span {
+        padding: 8px 11px;
+        font-size: 0.8125rem;
+      }
+
+      .edu-card h3 {
+        font-size: 0.9375rem;
+      }
+
+      .edu-card p {
+        font-size: 0.875rem;
+      }
+
+      .footer {
+        padding-bottom: max(1.25rem, env(safe-area-inset-bottom, 0px));
+      }
+    }
+
+    @media (min-width: 641px) and (max-width: 900px) {
+      .edu-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (min-width: 901px) {
+      .edu-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
     }
   </style>
 </head>
@@ -997,8 +1173,9 @@
   </main>
 
   <footer class="footer">
-    <p class="footer-copy">© Ashar Khan · Bangalore</p>
+    <p class="footer-copy">© Ashar Khan · <span class="footer-egg-trigger" title="Curious?">Bangalore</span></p>
   </footer>
+  <div class="egg-toast" id="egg-toast" role="status" aria-live="polite" hidden></div>
 
   <script>
     (function () {
@@ -1009,6 +1186,68 @@
       }
       onScroll();
       window.addEventListener('scroll', onScroll, { passive: true });
+    })();
+
+    (function () {
+      var messages = [
+        "Exploratory testing: you passed.",
+        "200 OK — this footer shipped with sign-off.",
+        "If you found this, you already belong in the release notes.",
+        "Sanity check: still human. Still shipping.",
+      ];
+      var toast = document.getElementById('egg-toast');
+      var trigger = document.querySelector('.footer-egg-trigger');
+      var seq = 0;
+      var taps = 0;
+      var tapTimer;
+      var konami = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+      var k = 0;
+      var hideTimer;
+
+      function showEgg(text) {
+        if (!toast) return;
+        toast.hidden = false;
+        toast.textContent = text;
+        toast.classList.add('is-on');
+        clearTimeout(hideTimer);
+        hideTimer = setTimeout(function () {
+          toast.classList.remove('is-on');
+          setTimeout(function () {
+            toast.textContent = "";
+            toast.hidden = true;
+          }, 400);
+        }, 4200);
+      }
+
+      function randomLine() {
+        return messages[Math.floor(Math.random() * messages.length)];
+      }
+
+      if (trigger) {
+        trigger.addEventListener("click", function () {
+          taps += 1;
+          clearTimeout(tapTimer);
+          if (taps >= 3) {
+            taps = 0;
+            showEgg(randomLine());
+            return;
+          }
+          tapTimer = setTimeout(function () { taps = 0; }, 500);
+        });
+      }
+
+      document.addEventListener("keydown", function (e) {
+        var code = e.keyCode != null ? e.keyCode : e.which;
+        if (code === konami[k]) {
+          k += 1;
+          if (k === konami.length) {
+            k = 0;
+            showEgg("Combo unlocked — " + randomLine());
+          }
+        } else {
+          k = code === konami[0] ? 1 : 0;
+        }
+      });
     })();
   </script>
 </body>
